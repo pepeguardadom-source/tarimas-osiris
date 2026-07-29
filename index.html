@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tarimas Osiris | Proveedor Industrial de Tarimas de Madera</title>
+  <meta name="description" content="Proveedor industrial de tarimas de madera nuevas y recicladas para maquiladoras, almacenes y empresas. Calidad garantizada, entrega puntual, precios por volumen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --black:   #0D0D0D;
+      --dark:    #141414;
+      --dark2:   #1C1C1C;
+      --gold:    #C9922A;
+      --gold-lt: #E8B84B;
+      --white:   #FFFFFF;
+      --gray:    #F5F5F5;
+      --muted:   #999;
+      --text:    #222;
+      --brown:   #5C3A1E;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; overflow-x: hidden; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 200;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 48px;
+      height: 90px;
+      background: rgba(13,13,13,0.97);
+      box-shadow: 0 2px 24px rgba(0,0,0,0.5);
+      backdrop-filter: blur(12px);
+      transition: background .4s, box-shadow .4s;
+      border-bottom: 2px solid rgba(201,146,42,0.35);
+    }
+    nav.scrolled {
+      background: rgba(13,13,13,0.99);
+      box-shadow: 0 4px 32px rgba(0,0,0,0.7);
+    }
+    .nav-brand {
+      display: flex; align-items: center; gap: 16px;
+      text-decoration: none;
+    }
+    .nav-brand img {
+      height: 72px; width: auto;
+    }
+    .nav-brand-text {
+      display: flex; flex-direction: column; line-height: 1;
+    }
+    .nav-brand-text .brand-main {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 2rem; font-weight: 900;
+      color: #fff; letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .nav-brand-text .brand-sub {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.85rem; font-weight: 700;
+      color: var(--gold); letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+    .logo {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.4rem; font-weight: 900;
+      color: #fff; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .logo span { color: var(--gold-lt); }
+    .nav-links a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: 0.88rem; font-weight: 500; letter-spacing: 0.5px;
+      margin: 0 20px; text-transform: uppercase;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+    .nav-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: #fff !important;
+      padding: 8px 20px; border-radius: 4px;
+      font-weight: 700 !important; margin-left: 20px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-lt) !important; color: #000 !important; }
+
+    /* ─── HERO ─── */
+    #hero {
+      position: relative; min-height: 100vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1920&q=80&auto=format&fit=crop');
+      background-size: cover; background-position: center;
+      transform: scale(1.05);
+      transition: transform 8s ease-out;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(105deg, rgba(13,13,13,0.88) 0%, rgba(13,13,13,0.65) 55%, rgba(13,13,13,0.3) 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      max-width: 760px; padding: 0 48px;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(201,146,42,0.15);
+      border: 1px solid rgba(201,146,42,0.5);
+      color: var(--gold-lt); font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 2px; margin-bottom: 28px;
+    }
+    .hero-tag::before { content:''; width:6px; height:6px; background: var(--gold-lt); border-radius:50%; }
+    #hero h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      color: #fff; line-height: 1.1; font-weight: 900;
+      margin-bottom: 24px; letter-spacing: -1px;
+    }
+    #hero h1 em { color: var(--gold-lt); font-style: normal; display: block; }
+    #hero p {
+      color: rgba(255,255,255,0.75); font-size: 1.1rem;
+      line-height: 1.8; max-width: 540px; margin-bottom: 44px;
+    }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; padding: 18px 36px; border-radius: 4px;
+      text-decoration: none; transition: all .25s;
+      box-shadow: 0 4px 24px rgba(201,146,42,0.35);
+    }
+    .btn-gold:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,146,42,0.45); }
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: transparent; color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem; font-weight: 700; letter-spacing: 1px;
+      text-transform: uppercase; padding: 18px 36px; border-radius: 4px;
+      text-decoration: none; border: 1px solid rgba(255,255,255,0.4);
+      transition: all .25s;
+    }
+    .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+    .hero-stats {
+      position: absolute; bottom: 48px; left: 48px; right: 48px;
+      display: flex; gap: 0; z-index: 2;
+    }
+    .hero-stat {
+      flex: 1; padding: 24px 32px;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      background: rgba(13,13,13,0.6);
+      backdrop-filter: blur(10px);
+    }
+    .hero-stat:first-child { border-left: none; }
+    .hero-stat strong {
+      display: block; font-family: 'Montserrat', sans-serif;
+      font-size: 2rem; font-weight: 900; color: var(--gold-lt);
+    }
+    .hero-stat span { font-size: 0.82rem; color: rgba(255,255,255,0.55); text-transform: uppercase; letter-spacing: 1px; }
+
+    /* ─── MARQUEE ─── */
+    .marquee-wrap {
+      background: var(--gold); overflow: hidden;
+      padding: 14px 0;
+    }
+    .marquee-track {
+      display: flex; gap: 0;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track span {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.8rem; font-weight: 800; color: #fff;
+      letter-spacing: 2px; text-transform: uppercase;
+      padding: 0 32px;
+    }
+    .marquee-track span::after {
+      content: '✦'; margin-left: 32px; opacity: 0.5;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SECCIÓN BASE ─── */
+    section { padding: 100px 48px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .label {
+      display: inline-block;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 16px;
+    }
+    h2.section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900; line-height: 1.15;
+      letter-spacing: -0.5px; margin-bottom: 20px;
+      color: var(--black);
+    }
+    h2.section-title.light { color: #fff; }
+    p.section-sub {
+      font-size: 1.05rem; color: var(--muted);
+      line-height: 1.8; max-width: 520px;
+    }
+    p.section-sub.light { color: rgba(255,255,255,0.6); }
+
+    /* ─── NOSOTROS (2 columnas) ─── */
+    #nosotros { background: var(--gray); padding-top: 120px; }
+    .nosotros-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+    }
+    .nosotros-img-wrap { position: relative; }
+    .nosotros-img {
+      width: 100%; height: 500px; object-fit: cover;
+      border-radius: 4px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.15);
+    }
+    .nosotros-badge {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--gold); color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem; font-weight: 900;
+      padding: 28px 32px; border-radius: 4px;
+      text-align: center; line-height: 1.3;
+      box-shadow: 0 8px 32px rgba(201,146,42,0.4);
+    }
+    .nosotros-badge strong { display: block; font-size: 2.4rem; }
+    .checks { margin-top: 36px; display: flex; flex-direction: column; gap: 16px; }
+    .check-item {
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .check-icon {
+      width: 28px; height: 28px; min-width: 28px;
+      background: var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff; font-size: 0.8rem; margin-top: 2px;
+    }
+    .check-item h4 { font-weight: 700; font-size: 0.97rem; margin-bottom: 4px; color: var(--black); }
+    .check-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    /* ─── PRODUCTOS ─── */
+    #productos { background: var(--black); }
+    .productos-header {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; margin-bottom: 60px; flex-wrap: wrap; gap: 24px;
+    }
+    .productos-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .prod-card {
+      position: relative; overflow: hidden;
+      height: 460px; cursor: pointer;
+    }
+    .prod-card img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .6s ease;
+      filter: brightness(0.55);
+    }
+    .prod-card:hover img { transform: scale(1.06); filter: brightness(0.4); }
+    .prod-info {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      justify-content: flex-end; padding: 36px 32px;
+    }
+    .prod-tag {
+      display: inline-block; width: fit-content;
+      background: var(--gold); color: #fff;
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; padding: 5px 12px;
+      border-radius: 2px; margin-bottom: 12px;
+    }
+    .prod-card h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.5rem; font-weight: 900;
+      color: #fff; margin-bottom: 10px;
+    }
+    .prod-card p {
+      font-size: 0.9rem; color: rgba(255,255,255,0.65);
+      line-height: 1.7; max-height: 0; overflow: hidden;
+      transition: max-height .4s ease, opacity .4s;
+      opacity: 0;
+    }
+    .prod-card:hover p { max-height: 100px; opacity: 1; }
+    .prod-line {
+      width: 36px; height: 2px; background: var(--gold);
+      margin-bottom: 14px;
+    }
+
+    /* ─── CIFRAS ─── */
+    #cifras {
+      background: var(--dark2); padding: 72px 48px;
+    }
+    .cifras-grid {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+    }
+    .cifra {
+      text-align: center; padding: 48px 24px;
+      border-right: 1px solid rgba(255,255,255,0.07);
+    }
+    .cifra:last-child { border-right: none; }
+    .cifra strong {
+      display: block; font-family: 'Montserrat', sans-serif;
+      font-size: 3rem; font-weight: 900;
+      color: var(--gold-lt); line-height: 1;
+      margin-bottom: 10px;
+    }
+    .cifra span {
+      font-size: 0.82rem; color: rgba(255,255,255,0.45);
+      text-transform: uppercase; letter-spacing: 1.5px;
+    }
+
+    /* ─── PROCESO ─── */
+    #proceso { background: #fff; }
+    .proceso-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 32px; margin-top: 64px;
+    }
+    .paso {
+      padding: 36px 28px;
+      border: 1px solid #ebebeb;
+      border-radius: 4px; position: relative;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .paso:hover { border-color: var(--gold); box-shadow: 0 8px 32px rgba(201,146,42,0.1); }
+    .paso-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 4rem; font-weight: 900;
+      color: rgba(201,146,42,0.1); line-height: 1;
+      margin-bottom: 20px;
+    }
+    .paso h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1rem; font-weight: 800;
+      color: var(--black); margin-bottom: 10px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .paso p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ─── IMAGEN FULL ─── */
+    #banner {
+      position: relative; height: 500px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    #banner img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      filter: brightness(0.35);
+    }
+    .banner-content {
+      position: relative; z-index: 2;
+      text-align: center; padding: 0 48px;
+    }
+    .banner-content h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.4rem);
+      font-weight: 900; color: #fff;
+      letter-spacing: -1px; margin-bottom: 20px;
+    }
+    .banner-content h2 em { color: var(--gold-lt); font-style: normal; }
+    .banner-content p {
+      color: rgba(255,255,255,0.65); font-size: 1.05rem;
+      margin-bottom: 40px;
+    }
+
+    /* ─── VENTAJAS ─── */
+    #ventajas { background: var(--gray); }
+    .ventajas-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center; margin-top: 0;
+    }
+    .ventajas-img {
+      width: 100%; height: 560px; object-fit: cover;
+      border-radius: 4px; box-shadow: 0 24px 64px rgba(0,0,0,0.12);
+    }
+    .ventajas-list { display: flex; flex-direction: column; gap: 0; }
+    .ventaja-item {
+      display: flex; gap: 24px; padding: 28px 0;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .ventaja-item:first-child { padding-top: 0; }
+    .ventaja-item:last-child { border-bottom: none; }
+    .v-num {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.8rem; font-weight: 900;
+      color: var(--gold); min-width: 48px;
+      line-height: 1;
+    }
+    .ventaja-item h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 1rem;
+      color: var(--black); margin-bottom: 6px;
+      text-transform: uppercase; letter-spacing: 0.3px;
+    }
+    .ventaja-item p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ─── CTA FINAL + FORMULARIO ─── */
+    #cta {
+      background: var(--black);
+      padding: 120px 48px;
+    }
+    .cta-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .cta-left h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 900; color: #fff;
+      letter-spacing: -0.5px; margin-bottom: 16px;
+    }
+    .cta-left p { color: rgba(255,255,255,0.5); font-size: 1rem; line-height: 1.8; margin-bottom: 36px; }
+    .trust-items { display: flex; flex-direction: column; gap: 16px; }
+    .trust-item {
+      display: flex; align-items: center; gap: 14px;
+      color: rgba(255,255,255,0.6); font-size: 0.9rem;
+    }
+    .trust-item::before {
+      content: '✓';
+      display: flex; align-items: center; justify-content: center;
+      width: 24px; height: 24px; min-width: 24px;
+      background: rgba(201,146,42,0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold-lt); font-size: 0.75rem; font-weight: 700;
+      border-radius: 50%;
+    }
+
+    /* Formulario */
+    .cta-form {
+      background: #fff; border-radius: 6px;
+      padding: 44px 40px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+    }
+    .cta-form h3 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem; font-weight: 800;
+      color: var(--black); margin-bottom: 6px;
+      text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .cta-form .form-sub {
+      font-size: 0.85rem; color: var(--muted);
+      margin-bottom: 28px; line-height: 1.6;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label {
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: #555;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 13px 16px; border: 1.5px solid #e0e0e0;
+      border-radius: 4px; font-size: 0.92rem;
+      font-family: 'Inter', sans-serif;
+      color: var(--black); background: #fafafa;
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,146,42,0.1);
+      background: #fff;
+    }
+    .form-group textarea { resize: vertical; min-height: 88px; }
+    .form-group select { cursor: pointer; }
+    .btn-submit {
+      width: 100%; padding: 16px;
+      background: var(--gold); color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem; font-weight: 800;
+      letter-spacing: 1px; text-transform: uppercase;
+      border: none; border-radius: 4px; cursor: pointer;
+      transition: background .2s, transform .15s;
+      box-shadow: 0 4px 20px rgba(201,146,42,0.3);
+      margin-top: 4px;
+    }
+    .btn-submit:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .form-note {
+      text-align: center; font-size: 0.75rem;
+      color: #aaa; margin-top: 12px;
+      line-height: 1.5;
+    }
+    .form-success {
+      display: none; text-align: center; padding: 32px 0;
+    }
+    .form-success .success-icon {
+      font-size: 3rem; margin-bottom: 16px;
+    }
+    .form-success h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.2rem; font-weight: 900;
+      color: var(--black); margin-bottom: 8px;
+    }
+    .form-success p { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .cta-grid { grid-template-columns: 1fr; gap: 48px; }
+      .form-row { grid-template-columns: 1fr; }
+      .cta-form { padding: 32px 24px; }
+      #cta { padding: 80px 24px; }
+    }
+    .btn-wapp {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: #25D366; color: #fff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.9rem; font-weight: 800; letter-spacing: 1px;
+      text-transform: uppercase; padding: 20px 40px; border-radius: 4px;
+      text-decoration: none; transition: all .25s;
+      box-shadow: 0 4px 32px rgba(37,211,102,0.3);
+    }
+    .btn-wapp:hover { background: #1db954; transform: translateY(-2px); box-shadow: 0 8px 40px rgba(37,211,102,0.45); }
+    .btn-wapp svg { width: 22px; height: 22px; fill: #fff; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: #080808; padding: 48px;
+      display: flex; align-items: center;
+      justify-content: space-between; flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900; font-size: 1.1rem;
+      color: #fff; letter-spacing: 2px; text-transform: uppercase;
+    }
+    .footer-logo span { color: var(--gold-lt); }
+    footer p { color: #444; font-size: 0.82rem; }
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ─── FAB WHATSAPP ─── */
+    .fab {
+      position: fixed; bottom: 32px; right: 32px; z-index: 300;
+      width: 62px; height: 62px; border-radius: 50%;
+      background: #25D366;
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 24px rgba(37,211,102,0.45);
+      animation: fab-pulse 3s ease-in-out infinite;
+      transition: transform .2s;
+    }
+    .fab:hover { transform: scale(1.1); }
+    .fab svg { width: 32px; height: 32px; fill: #fff; }
+    .fab-tooltip {
+      position: absolute; right: 74px;
+      background: var(--black); color: #fff;
+      font-size: 0.78rem; font-weight: 600; white-space: nowrap;
+      padding: 8px 14px; border-radius: 4px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .2s;
+    }
+    .fab:hover .fab-tooltip { opacity: 1; }
+    @keyframes fab-pulse {
+      0%, 100% { box-shadow: 0 4px 24px rgba(37,211,102,0.45); }
+      50%        { box-shadow: 0 4px 40px rgba(37,211,102,0.7); }
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 72px 24px; }
+      .hero-content { padding: 0 24px; }
+      .hero-stats { left: 24px; right: 24px; bottom: 24px; flex-wrap: wrap; }
+      .hero-stat { flex: 1 1 50%; }
+      .nosotros-grid, .ventajas-grid { grid-template-columns: 1fr; gap: 40px; }
+      .nosotros-badge { right: 0; bottom: -16px; }
+      .productos-grid { grid-template-columns: 1fr; }
+      .prod-card { height: 300px; }
+      .cifras-grid { grid-template-columns: repeat(2, 1fr); }
+      .cifra { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+      .proceso-grid { grid-template-columns: 1fr 1fr; }
+      #cifras, footer { padding: 48px 24px; }
+      #cta { padding: 80px 24px; }
+      #banner { height: 360px; }
+    }
+    @media (max-width: 560px) {
+      .proceso-grid { grid-template-columns: 1fr; }
+      .cifras-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-brand">
+    <img src="logo-tarimas-osiris.png" alt="Tarimas Osiris" />
+    <div class="nav-brand-text">
+      <span class="brand-main">Tarimas</span>
+      <span class="brand-sub">— Osiris —</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#productos">Productos</a>
+    <a href="#ventajas">Ventajas</a>
+    <a href="#proceso">Proceso</a>
+    <a href="/blog/">Blog</a>
+    <a href="https://wa.me/526646937427?text=Hola%2C%20quiero%20cotizar%20tarimas%20para%20mi%20empresa" class="nav-cta" target="_blank">Cotizar ahora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Proveedor Industrial · Maquiladoras &amp; Empresas</div>
+    <h1>
+      Tarimas de madera
+      <em>que sostienen tu operación</em>
+    </h1>
+    <p>Suministramos tarimas de madera nuevas y recicladas con calidad industrial. Respuesta en el mismo día, precios por volumen y entrega directa a tu planta.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/526646937427?text=Hola%2C%20me%20interesa%20cotizar%20tarimas%20para%20mi%20empresa.%20%C2%BFCu%C3%A1les%20son%20sus%20precios%3F" class="btn-gold" target="_blank">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.529 5.845L0 24l6.335-1.51A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.374l-.36-.214-3.736.89.924-3.627-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+        Solicitar cotización
+      </a>
+      <a href="#productos" class="btn-outline">Ver productos</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <strong>+10</strong>
+      <span>Años de experiencia</span>
+    </div>
+    <div class="hero-stat">
+      <strong>24h</strong>
+      <span>Tiempo de respuesta</span>
+    </div>
+    <div class="hero-stat">
+      <strong>100%</strong>
+      <span>Calidad garantizada</span>
+    </div>
+    <div class="hero-stat">
+      <strong>Vol.</strong>
+      <span>Precios por volumen</span>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Tarimas Nuevas</span>
+    <span>Tarimas Recicladas</span>
+    <span>Entrega Rápida</span>
+    <span>Precios por Volumen</span>
+    <span>Maquiladoras</span>
+    <span>Almacenes</span>
+    <span>Calidad Industrial</span>
+    <span>Proveedor Confiable</span>
+    <span>Tarimas Nuevas</span>
+    <span>Tarimas Recicladas</span>
+    <span>Entrega Rápida</span>
+    <span>Precios por Volumen</span>
+    <span>Maquiladoras</span>
+    <span>Almacenes</span>
+    <span>Calidad Industrial</span>
+    <span>Proveedor Confiable</span>
+  </div>
+</div>
+
+<!-- NOSOTROS -->
+<section id="nosotros">
+  <div class="container">
+    <div class="nosotros-grid">
+      <div class="nosotros-img-wrap">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&q=80&auto=format&fit=crop" alt="Operación de bodega con tarimas" class="nosotros-img" loading="lazy" />
+        <div class="nosotros-badge">
+          <strong>+10</strong>
+          años siendo<br>tu proveedor
+        </div>
+      </div>
+      <div>
+        <span class="label">Quiénes somos</span>
+        <h2 class="section-title">Más que un proveedor,<br>un aliado logístico</h2>
+        <p style="color:#666; line-height:1.8; margin-bottom:8px;">En Tarimas Osiris nos especializamos en abastecer a empresas, maquiladoras y centros de distribución con tarimas de madera de alta calidad.</p>
+        <p style="color:#666; line-height:1.8;">Entendemos que tu operación no puede detenerse — por eso respondemos rápido, entregamos a tiempo y garantizamos cada pieza que sale de nuestras instalaciones.</p>
+        <div class="checks">
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div>
+              <h4>Inventario siempre disponible</h4>
+              <p>Stock permanente de tarimas nuevas y recicladas para atender pedidos urgentes o programados.</p>
+            </div>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">✓</div>
+            <div>
+              <h4>Inspección antes de entrega</h4>
+              <p>Revisamos cada tarima para garantizar que llegue en las condiciones que tu operación requiere.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos">
+  <div class="container">
+    <div class="productos-header">
+      <div>
+        <span class="label" style="color: var(--gold-lt);">Lo que ofrecemos</span>
+        <h2 class="section-title light">Nuestros productos</h2>
+      </div>
+      <a href="https://wa.me/526646937427?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20sus%20productos%20y%20precios" class="btn-gold" target="_blank" style="flex-shrink:0;">Ver precios →</a>
+    </div>
+  </div>
+  <div class="productos-grid">
+    <div class="prod-card">
+      <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80&auto=format&fit=crop" alt="Tarimas de madera nuevas" loading="lazy" />
+      <div class="prod-info">
+        <div class="prod-tag">Disponible</div>
+        <div class="prod-line"></div>
+        <h3>Tarimas Nuevas</h3>
+        <p>Fabricadas con madera de primera calidad. Ideales para exportación, carga pesada y operaciones que requieren presentación impecable.</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=800&q=80&auto=format&fit=crop" alt="Tarimas recicladas de calidad" loading="lazy" />
+      <div class="prod-info">
+        <div class="prod-tag">Alta rotación</div>
+        <div class="prod-line"></div>
+        <h3>Tarimas Recicladas</h3>
+        <p>Seleccionadas y reparadas. Excelente relación precio-calidad para almacenaje y distribución interna a gran volumen.</p>
+      </div>
+    </div>
+    <div class="prod-card">
+      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80&auto=format&fit=crop" alt="Pedidos de tarimas por volumen" loading="lazy" />
+      <div class="prod-info">
+        <div class="prod-tag">Precio especial</div>
+        <div class="prod-line"></div>
+        <h3>Pedidos por Volumen</h3>
+        <p>Entre más pides, mejor precio. Manejamos proyectos desde pequeñas cantidades hasta abastecimiento continuo para grandes operaciones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CIFRAS -->
+<div id="cifras">
+  <div class="cifras-grid">
+    <div class="cifra">
+      <strong>+10</strong>
+      <span>Años en el mercado</span>
+    </div>
+    <div class="cifra">
+      <strong>24h</strong>
+      <span>Respuesta garantizada</span>
+    </div>
+    <div class="cifra">
+      <strong>100%</strong>
+      <span>Piezas inspeccionadas</span>
+    </div>
+    <div class="cifra">
+      <strong>Vol.</strong>
+      <span>Descuentos por volumen</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESO -->
+<section id="proceso">
+  <div class="container">
+    <div style="max-width:560px;">
+      <span class="label">Cómo trabajamos</span>
+      <h2 class="section-title">Cuatro pasos para recibir tus tarimas</h2>
+    </div>
+    <div class="proceso-grid">
+      <div class="paso">
+        <div class="paso-num">01</div>
+        <h4>Contáctanos</h4>
+        <p>Mándanos un mensaje por WhatsApp indicando tipo de tarima, cantidad y uso previsto. Respondemos el mismo día.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">02</div>
+        <h4>Cotización</h4>
+        <p>Te enviamos precio, disponibilidad y tiempo de entrega de forma clara. Sin letras chicas ni costos escondidos.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">03</div>
+        <h4>Confirmación</h4>
+        <p>Acordamos los detalles finales y coordinamos la logística de entrega según las necesidades de tu operación.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">04</div>
+        <h4>Entrega</h4>
+        <p>Recibe tus tarimas en tiempo y forma, directamente en tu planta, bodega o almacén. Revisadas y listas para usar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER FULL -->
+<div id="banner">
+  <img src="https://images.unsplash.com/photo-1494961104209-3c223057bd26?w=1920&q=80&auto=format&fit=crop" alt="Bodega industrial con tarimas" loading="lazy" />
+  <div class="banner-content">
+    <h2>¿Necesitas tarimas <em>hoy mismo?</em></h2>
+    <p>Consulta disponibilidad y recibe tu cotización en minutos.</p>
+    <a href="https://wa.me/526646937427?text=Hola%2C%20necesito%20tarimas%20con%20urgencia.%20%C2%BFTienen%20disponibilidad%3F" class="btn-wapp" target="_blank">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.529 5.845L0 24l6.335-1.51A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.374l-.36-.214-3.736.89.924-3.627-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Consultar disponibilidad
+    </a>
+  </div>
+</div>
+
+<!-- VENTAJAS -->
+<section id="ventajas">
+  <div class="container">
+    <div class="ventajas-grid">
+      <div>
+        <span class="label">Por qué elegirnos</span>
+        <h2 class="section-title" style="margin-bottom:48px;">Lo que nos hace diferentes</h2>
+        <div class="ventajas-list">
+          <div class="ventaja-item">
+            <div class="v-num">01</div>
+            <div>
+              <h4>Entrega puntual, siempre</h4>
+              <p>Tu operación no puede esperar. Nos comprometemos con los tiempos acordados y los cumplimos.</p>
+            </div>
+          </div>
+          <div class="ventaja-item">
+            <div class="v-num">02</div>
+            <div>
+              <h4>Precios justos por volumen</h4>
+              <p>Tarifas competitivas que mejoran conforme crece tu pedido. Cotización sin compromiso.</p>
+            </div>
+          </div>
+          <div class="ventaja-item">
+            <div class="v-num">03</div>
+            <div>
+              <h4>Cero sorpresas en calidad</h4>
+              <p>Cada tarima pasa por inspección antes de salir. Lo que cotizamos es lo que recibes.</p>
+            </div>
+          </div>
+          <div class="ventaja-item">
+            <div class="v-num">05</div>
+            <div>
+              <h4>Flexibilidad en pedidos</h4>
+              <p>Desde una pequeña carga hasta abastecimiento continuo. Nos adaptamos a tu operación.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?w=800&q=80&auto=format&fit=crop" alt="Operación con tarimas en bodega industrial" class="ventajas-img" loading="lazy" />
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL + FORMULARIO -->
+<section id="cta">
+  <div class="container">
+    <div class="cta-grid">
+
+      <!-- Izquierda: copy -->
+      <div class="cta-left">
+        <span class="label" style="color:var(--gold-lt);">Solicita tu cotización</span>
+        <h2>Cotización directa<br>para tu operación</h2>
+        <p>Para darte el mejor precio necesitamos conocer tu operación. Llena el formulario y te contactamos en menos de 24 horas con tu cotización personalizada.</p>
+        <div class="trust-items">
+          <div class="trust-item">Tu información es confidencial</div>
+          <div class="trust-item">Respondemos el mismo día en horario hábil</div>
+          <div class="trust-item">Cotización sin compromiso</div>
+        </div>
+      </div>
+
+      <!-- Derecha: formulario -->
+      <div class="cta-form">
+        <h3>Formulario de cotización</h3>
+        <p class="form-sub">Completa los datos y nos ponemos en contacto contigo directamente.</p>
+
+        <div id="formSuccess" class="form-success">
+          <div class="success-icon">✅</div>
+          <h4>¡Solicitud recibida!</h4>
+          <p>Revisaremos tu información y te enviaremos la cotización a tu correo en las próximas horas.</p>
+        </div>
+
+        <form name="cotizacion" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="cotizacionForm">
+          <input type="hidden" name="form-name" value="cotizacion" />
+          <!-- Honeypot anti-spam -->
+          <p style="display:none;"><input name="bot-field" /></p>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Ej. Juan Pérez" required />
+            </div>
+            <div class="form-group">
+              <label for="empresa">Empresa / Razón Social *</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Ej. Maquiladora XYZ S.A." required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="correo">Correo electrónico *</label>
+              <input type="email" id="correo" name="correo" placeholder="compras@empresa.com" required />
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Ej. 664 123 4567" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="cantidad">Cantidad aproximada *</label>
+              <select id="cantidad" name="cantidad" required>
+                <option value="" disabled selected>Selecciona...</option>
+                <option value="1-50">1 – 50 tarimas</option>
+                <option value="51-200">51 – 200 tarimas</option>
+                <option value="201-500">201 – 500 tarimas</option>
+                <option value="500+">Más de 500 tarimas</option>
+                <option value="continuo">Abastecimiento continuo</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="giro">Giro de tu empresa *</label>
+              <select id="giro" name="giro" required>
+                <option value="" disabled selected>Selecciona...</option>
+                <option value="maquiladora">Maquiladora</option>
+                <option value="almacen">Almacén / Bodega</option>
+                <option value="distribucion">Distribución / Logística</option>
+                <option value="exportacion">Exportación</option>
+                <option value="manufactura">Manufactura</option>
+                <option value="comercio">Comercio</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tipo">Tipo de tarima que necesitas</label>
+            <select id="tipo" name="tipo">
+              <option value="" disabled selected>Selecciona...</option>
+              <option value="nuevas">Tarimas nuevas</option>
+              <option value="recicladas">Tarimas recicladas</option>
+              <option value="ambas">Ambas / No estoy seguro</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="mensaje">Detalles adicionales (opcional)</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Medidas especiales, frecuencia de pedido, condiciones de entrega..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">Enviar solicitud de cotización →</button>
+          <p class="form-note">🔒 Tu información es confidencial. Solo la usamos para enviarte tu cotización.</p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <img src="logo-tarimas-osiris.png" alt="Tarimas Osiris" style="height:48px;width:auto" />
+  <p>© 2026 Tarimas Osiris · <a href="https://wa.me/526646937427" target="_blank">Contacto vía WhatsApp</a></p>
+</footer>
+
+<!-- FAB WHATSAPP -->
+<a href="https://wa.me/526646937427?text=Hola%2C%20me%20interesa%20cotizar%20tarimas" class="fab" target="_blank" title="Cotizar por WhatsApp">
+  <div class="fab-tooltip">Cotizar ahora</div>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.529 5.845L0 24l6.335-1.51A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.374l-.36-.214-3.736.89.924-3.627-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+</a>
+
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hero background animation on load
+  window.addEventListener('load', () => {
+    document.getElementById('heroBg').classList.add('loaded');
+  });
+
+  // Formulario con Netlify Forms + feedback visual
+  const form = document.getElementById('cotizacionForm');
+  const successDiv = document.getElementById('formSuccess');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.btn-submit');
+      btn.textContent = 'Enviando...';
+      btn.disabled = true;
+      try {
+        const data = new FormData(form);
+        await fetch('/', { method: 'POST', body: new URLSearchParams(data) });
+        form.style.display = 'none';
+        successDiv.style.display = 'block';
+      } catch {
+        btn.textContent = 'Error al enviar, intenta de nuevo';
+        btn.disabled = false;
+      }
+    });
+  }
+</script>
+</body>
+</html>

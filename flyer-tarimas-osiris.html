@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tarimas Osiris — Flyer</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800;900&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#1a1a1a; display:flex; justify-content:center; align-items:flex-start; min-height:100vh; padding:40px 20px; font-family:'Inter',sans-serif; }
+
+  /* ── FLYER ── */
+  .flyer {
+    width: 800px;
+    background: #0D0D0D;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.6);
+  }
+
+  /* Franja dorada superior */
+  .top-bar { height: 6px; background: linear-gradient(90deg, #C9922A, #E8B84B, #C9922A); }
+
+  /* Header */
+  .header {
+    padding: 40px 56px 36px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: space-between;
+    position: relative;
+  }
+  .header::after {
+    content: '';
+    position: absolute; bottom: 0; left: 56px; right: 56px;
+    height: 1px; background: linear-gradient(90deg, transparent, rgba(201,146,42,0.3), transparent);
+  }
+
+  /* Logo inline en flyer */
+  .logo-wrap { display: flex; align-items: center; gap: 20px; }
+  .logo-icon { width: 64px; height: 64px; flex-shrink: 0; }
+  .logo-text-wrap { line-height: 1; }
+  .logo-tarimas {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px; font-weight: 900;
+    letter-spacing: 4px; color: #fff;
+    text-transform: uppercase;
+  }
+  .logo-osiris {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px; font-weight: 900;
+    letter-spacing: 6px;
+    background: linear-gradient(135deg, #E8B84B, #C9922A);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .logo-tag {
+    font-size: 8px; letter-spacing: 3px;
+    color: #555; text-transform: uppercase; margin-top: 4px;
+  }
+
+  .header-right { text-align: right; }
+  .header-right .badge {
+    display: inline-block;
+    border: 1px solid rgba(201,146,42,0.4);
+    background: rgba(201,146,42,0.08);
+    color: #E8B84B; font-size: 10px; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  .header-right p { color: #444; font-size: 11px; letter-spacing: 1px; }
+
+  /* Hero del flyer */
+  .hero {
+    position: relative; height: 320px; overflow: hidden;
+  }
+  .hero img {
+    width: 100%; height: 100%; object-fit: cover;
+    filter: brightness(0.38);
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 20%, rgba(13,13,13,0.85) 100%);
+  }
+  .hero-content {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 0 56px 36px;
+  }
+  .hero-content h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 42px; font-weight: 900;
+    color: #fff; line-height: 1.1;
+    letter-spacing: -1px; margin-bottom: 12px;
+  }
+  .hero-content h1 em {
+    color: #E8B84B; font-style: normal;
+  }
+  .hero-content p {
+    color: rgba(255,255,255,0.6); font-size: 15px; line-height: 1.7;
+    max-width: 480px;
+  }
+
+  /* Productos */
+  .products {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .product {
+    padding: 28px 32px;
+    border-right: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+  }
+  .product:last-child { border-right: none; }
+  .product::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #C9922A, transparent);
+  }
+  .product-icon { font-size: 28px; margin-bottom: 12px; }
+  .product h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 800;
+    color: #fff; text-transform: uppercase;
+    letter-spacing: 1px; margin-bottom: 6px;
+  }
+  .product p { font-size: 12px; color: #555; line-height: 1.6; }
+
+  /* Stats bar */
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    background: rgba(201,146,42,0.06);
+    border-top: 1px solid rgba(201,146,42,0.15);
+    border-bottom: 1px solid rgba(201,146,42,0.15);
+  }
+  .stat {
+    padding: 24px 32px; text-align: center;
+    border-right: 1px solid rgba(201,146,42,0.1);
+  }
+  .stat:last-child { border-right: none; }
+  .stat strong {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px; font-weight: 900;
+    color: #E8B84B; line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat span { font-size: 10px; color: #555; text-transform: uppercase; letter-spacing: 1.5px; }
+
+  /* CTA principal */
+  .cta-section {
+    padding: 44px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px;
+  }
+  .cta-left h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 26px; font-weight: 900;
+    color: #fff; line-height: 1.2; margin-bottom: 8px;
+  }
+  .cta-left h2 em { color: #E8B84B; font-style: normal; }
+  .cta-left p { font-size: 13px; color: #555; line-height: 1.6; max-width: 320px; }
+
+  .cta-right { flex-shrink: 0; text-align: center; }
+  .qr-box {
+    background: #fff; padding: 16px; border-radius: 4px;
+    display: inline-block; margin-bottom: 8px;
+  }
+  .qr-box img { width: 120px; height: 120px; display: block; }
+  .qr-label { font-size: 10px; color: #444; letter-spacing: 1.5px; text-transform: uppercase; }
+
+  /* Beneficios rápidos */
+  .benefits {
+    padding: 0 56px 40px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .benefit {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 4px;
+  }
+  .benefit-icon {
+    width: 32px; height: 32px; min-width: 32px;
+    background: rgba(201,146,42,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .benefit p { font-size: 12px; color: #888; line-height: 1.5; }
+  .benefit p strong { color: #ccc; display: block; font-size: 12px; }
+
+  /* URL grande */
+  .url-bar {
+    background: linear-gradient(135deg, #C9922A, #E8B84B);
+    padding: 20px 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .url-bar .url {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 22px; font-weight: 900;
+    color: #fff; letter-spacing: 1px;
+  }
+  .url-bar .wapp {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px; font-weight: 800;
+    color: rgba(255,255,255,0.85); letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .url-bar .wapp svg { width:20px; height:20px; fill:#fff; }
+
+  /* Franja bottom */
+  .bottom-bar {
+    height: 4px;
+    background: linear-gradient(90deg, #0D0D0D, #C9922A 50%, #0D0D0D);
+  }
+</style>
+</head>
+<body>
+<div class="flyer">
+  <div class="top-bar"></div>
+
+  <!-- Header con logo -->
+  <div class="header">
+    <!-- Logo oficial Tarimas Osiris -->
+    <div class="logo-wrap">
+      <img src="logo-tarimas-osiris.png" alt="Tarimas Osiris" style="height:80px;width:auto" />
+    </div>
+    <div class="header-right">
+      <div class="badge">📦 Tarimas de Madera</div>
+      <p>Nuevas &amp; Recicladas · Entrega Rápida</p>
+    </div>
+  </div>
+
+  <!-- Hero imagen -->
+  <div class="hero">
+    <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80&auto=format&fit=crop" alt="Bodega industrial con tarimas" />
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>Tu operación no puede<br>detenerse. <em>Nosotros tampoco.</em></h1>
+      <p>Proveedor industrial de tarimas de madera para maquiladoras, almacenes y centros de distribución. Respuesta en el mismo día.</p>
+    </div>
+  </div>
+
+  <!-- Productos -->
+  <div class="products">
+    <div class="product">
+      <div class="product-icon">🪵</div>
+      <h3>Tarimas Nuevas</h3>
+      <p>Madera de primera calidad para exportación y carga pesada.</p>
+    </div>
+    <div class="product">
+      <div class="product-icon">♻️</div>
+      <h3>Tarimas Recicladas</h3>
+      <p>Seleccionadas y reparadas. Precio competitivo en volumen.</p>
+    </div>
+    <div class="product">
+      <div class="product-icon">🚚</div>
+      <h3>Entrega Directa</h3>
+      <p>A tu planta, bodega o almacén. Puntual y confiable.</p>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat"><strong>+10</strong><span>Años de experiencia</span></div>
+    <div class="stat"><strong>24h</strong><span>Tiempo de respuesta</span></div>
+    <div class="stat"><strong>100%</strong><span>Calidad garantizada</span></div>
+  </div>
+
+  <!-- CTA con QR -->
+  <div class="cta-section">
+    <div class="cta-left">
+      <h2>Solicita tu cotización<br><em>hoy mismo</em></h2>
+      <p>Visita nuestra página, llena el formulario de cotización y recibe tu propuesta personalizada en menos de 24 horas. Sin rodeos, sin intermediarios.</p>
+      <br/>
+      <p style="color:#333; font-size:12px;">— O escanea el código QR con tu teléfono →</p>
+    </div>
+    <div class="cta-right">
+      <div class="qr-box">
+        <!-- QR generado con API de Google Charts -->
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=https://tarimasosiris.com&color=0D0D0D&bgcolor=FFFFFF" alt="QR tarimasosiris.com" />
+      </div>
+      <div class="qr-label">tarimasosiris.com</div>
+    </div>
+  </div>
+
+  <!-- Beneficios -->
+  <div class="benefits">
+    <div class="benefit">
+      <div class="benefit-icon">✓</div>
+      <p><strong>Inventario disponible</strong>Stock permanente para pedidos inmediatos o programados.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">💰</div>
+      <p><strong>Precios por volumen</strong>Mejor precio entre más unidades solicitas.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🔍</div>
+      <p><strong>Inspección previa</strong>Cada tarima revisada antes de salir a entrega.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🤝</div>
+      <p><strong>Trato directo</strong>Sin intermediarios. Hablas con quien decide.</p>
+    </div>
+  </div>
+
+  <!-- URL bar -->
+  <div class="url-bar">
+    <div class="url">🌐 tarimasosiris.com &nbsp;·&nbsp; <span style="font-size:14px;opacity:0.75">contacto@tarimasosiris.com</span></div>
+    <div class="wapp">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.555 4.116 1.529 5.845L0 24l6.335-1.51A11.956 11.956 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.017-1.374l-.36-.214-3.736.89.924-3.627-.235-.373A9.818 9.818 0 012.182 12C2.182 6.57 6.57 2.182 12 2.182S21.818 6.57 21.818 12 17.43 21.818 12 21.818z"/></svg>
+      Escríbenos por WhatsApp
+    </div>
+  </div>
+
+  <div class="bottom-bar"></div>
+</div>
+</body>
+</html>
